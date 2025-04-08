@@ -1,26 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { Authenticator } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import App from './App.tsx';
+import outputs from '../amplify_outputs.json';
+import './index.css';
+import '@aws-amplify/ui-react/styles.css';
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+Amplify.configure(outputs);
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <Authenticator
-            components={{
-                SignIn: {
-                    Header() {
-                        return <h3>Connexion à votre compte</h3>;
-                    },
-                },
-                SignUp: {
-                    Header() {
-                        return <h3>Créer un nouveau compte</h3>;
-                    },
-                }
-            }}
-        >
+        <Authenticator>
             <App />
         </Authenticator>
     </React.StrictMode>

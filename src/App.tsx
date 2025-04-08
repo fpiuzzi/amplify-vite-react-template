@@ -3,16 +3,15 @@ import { generateClient } from "aws-amplify/data";
 import type { Schema } from "../amplify/data/resource";
 import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
-
+import { useAuthenticator } from '@aws-amplify/ui-react';
 
 Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
 
 function App() {
-
+    const { signOut } = useAuthenticator();
     const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
 
     useEffect(() => {
         client.models.Todo.observeQuery().subscribe({
@@ -51,6 +50,7 @@ function App() {
                     Review next step of this tutorial.
                 </a>
             </div>
+            <button onClick={signOut}>Sign out</button>
         </main>
     );
 }
