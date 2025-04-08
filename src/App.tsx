@@ -46,7 +46,6 @@ function App() {
                 ))}
             </ul>
             <div>
-                🥳 App successfully hosted. Try creating a new todo.
                 <br />
                 <a href="https://docs.amplify.aws/react/start/quickstart/">
                     Review next step of this tutorial.
